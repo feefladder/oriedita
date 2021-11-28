@@ -10,6 +10,7 @@ import oriedita.tools.KeyStrokeUtil;
 import oriedita.tools.ResourceUtil;
 import oriedita.tools.StringOp;
 
+import javax.inject.Named;
 import javax.inject.Singleton;
 import javax.swing.*;
 import java.awt.*;
@@ -24,19 +25,16 @@ public class ButtonService {
     private final HelpDialog explanation;
     private final CreasePattern_Worker mainCreasePatternWorker;
     public Map<KeyStroke, AbstractButton> helpInputMap = new HashMap<>();
-    private Frame owner;
+    private final Frame owner;
     private final MouseHandlerVoronoiCreate mouseHandlerVoronoiCreate;
     private final CanvasModel canvasModel;
 
     @Inject
-    public ButtonService(HelpDialog explanation, CreasePattern_Worker mainCreasePatternWorker, MouseHandlerVoronoiCreate mouseHandlerVoronoiCreate, CanvasModel canvasModel) {
+    public ButtonService(@Named("mainFrame") JFrame owner, HelpDialog explanation, CreasePattern_Worker mainCreasePatternWorker, MouseHandlerVoronoiCreate mouseHandlerVoronoiCreate, CanvasModel canvasModel) {
         this.explanation = explanation;
         this.mainCreasePatternWorker = mainCreasePatternWorker;
         this.mouseHandlerVoronoiCreate = mouseHandlerVoronoiCreate;
         this.canvasModel = canvasModel;
-    }
-
-    public void setOwner(Frame owner) {
         this.owner = owner;
     }
 
