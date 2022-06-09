@@ -25,8 +25,6 @@ public class GridModel implements Serializable {
     private int verticalScalePosition;
     private int horizontalScalePosition;
 
-    private boolean drawDiagonalGridlines;
-
     @Inject
     public GridModel() {
         reset();
@@ -69,15 +67,6 @@ public class GridModel implements Serializable {
 
     public void advanceBaseState() {
         setBaseState(baseState.advance());
-    }
-
-    public boolean getDrawDiagonalGridlines(){
-        return drawDiagonalGridlines;
-    }
-
-    public void setDrawDiagonalGridlines(boolean newVal) {
-        this.drawDiagonalGridlines = newVal;
-        this.pcs.firePropertyChange("drawDiagonalGridlines", !newVal, newVal);
     }
 
     public int getVerticalScalePosition() {
